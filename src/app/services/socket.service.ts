@@ -11,7 +11,7 @@ export class SocketService {
   public getState: Function;
 
   constructor() {
-    this.url = 'ws://localhost:3000';
+    this.url = 'ws://conoha.arajo.xyz:3000';
   }
 
   /**

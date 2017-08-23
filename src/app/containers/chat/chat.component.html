@@ -6,73 +6,36 @@
           <span class="fa fa-comment"></span> Chat
         </div>
         <div class="card-block">
-          <ul class="chat">
-            <li class="left clearfix"><span class="chat-img pull-left">
-                            <img src="http://placehold.it/50/55C1E7/fff&amp;text=U" alt="User Avatar" class="rounded-circle">
-                        </span>
-              <div class="chat-body clearfix">
-                <div class="header">
-                  <strong class="primary-font">Jack Sparrow</strong>
-                  <small class="pull-right text-muted"><span class="fa fa-clock-o"></span>12 mins ago</small>
-                </div>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                  dolor, quis ullamcorper ligula sodales.
-                </p>
-              </div>
-            </li>
-            <li class="right clearfix">
-              <span class="chat-img pull-right">
-                <img src="http://placehold.it/50/FA6F57/fff&amp;text=ME" alt="User Avatar" class="rounded-circle">
-              </span>
-              <div class="chat-body clearfix">
-                <div class="header">
-                  <small class=" text-muted"><span class="fa fa-time"></span>13 mins ago</small>
-                  <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                </div>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                  dolor, quis ullamcorper ligula sodales.
-                </p>
-              </div>
-            </li>
-            <li class="left clearfix">
+          <ul class="chat" *ngFor="let item of messageList">
+            <li class="left clearfix" *ngIf="item.sender=='you'">
               <span class="chat-img pull-left">
                 <img src="http://placehold.it/50/55C1E7/fff&amp;text=U" alt="User Avatar" class="rounded-circle">
               </span>
               <div class="chat-body clearfix">
                 <div class="header">
-                  <strong class="primary-font">Jack Sparrow</strong>
-                  <small class="pull-right text-muted"><span class="fa fa-clock-o"></span>14 mins ago</small>
-                </div>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                  dolor, quis ullamcorper ligula sodales.
-                </p>
-              </div>
+                  <strong class="primary-font">{{item.sender}}</strong>
+                  <small class="pull-right text-muted"><span class="fa fa-clock-o"></span>{{item.date}}</small>
+                </div><p>{{item.content}}</p></div>
             </li>
-            <li class="right clearfix">
+            <li class="right clearfix" *ngIf="item.sender=='me'">
               <span class="chat-img pull-right">
                 <img src="http://placehold.it/50/FA6F57/fff&amp;text=ME" alt="User Avatar" class="rounded-circle">
               </span>
               <div class="chat-body clearfix">
                 <div class="header">
-                  <small class=" text-muted"><span class="fa fa-clock-o"></span>15 mins ago</small>
-                  <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                  <small class=" text-muted"><span class="fa fa-clock-o"></span>{{item.date}}</small>
+                  <strong class="pull-right primary-font">{{item.sender}}</strong>
                 </div>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                  dolor, quis ullamcorper ligula sodales.
-                </p>
+                <p>{{item.content}}</p>
               </div>
             </li>
           </ul>
         </div>
         <div class="card-footer">
           <div class="input-group">
-            <input type="text" class="form-control form-control-sm" placeholder="Type your message here...">
+            <input type="text" #inputMessage [(ngModel)]="textMessage" class="form-control form-control-sm" placeholder="Type your message here...">
             <span class="input-group-btn">
-              <button class="btn btn-warning btn-sm" (click)="sendMessage()">Send</button>
+              <button class="btn btn-warning btn-sm" (click)="sendMessage(inputMessage.value)">Send</button>
             </span>
           </div>
         </div>

@@ -8,6 +8,7 @@ import { ChatComponent } from './containers/chat/chat.component';
 import { SocketService } from './services/socket.service';
 import { MessengerService } from './services/messenger.service';
 import { BroadcastEventService } from './services/broadcast-event.service';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { BroadcastEventService } from './services/broadcast-event.service';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    CommonModule
   ],
   providers: [
     SocketService,
