@@ -15,7 +15,9 @@
                 <div class="header">
                   <strong class="primary-font">{{item.sender}}</strong>
                   <small class="pull-right text-muted"><span class="fa fa-clock-o"></span>{{item.date}}</small>
-                </div><p>{{item.content}}</p></div>
+                </div>
+                <p>{{item.content}}</p>
+              </div>
             </li>
             <li class="right clearfix" *ngIf="item.sender=='me'">
               <span class="chat-img pull-right">
