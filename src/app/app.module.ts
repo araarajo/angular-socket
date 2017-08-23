@@ -5,6 +5,9 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { ChatComponent } from './containers/chat/chat.component';
+import { SocketService } from './services/socket.service';
+import { MessengerService } from './services/messenger.service';
+import { BroadcastEventService } from './services/broadcast-event.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,11 @@ import { ChatComponent } from './containers/chat/chat.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    SocketService,
+    MessengerService,
+    BroadcastEventService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

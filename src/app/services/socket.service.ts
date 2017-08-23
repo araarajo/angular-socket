@@ -11,16 +11,16 @@ export class SocketService {
   public getState: Function;
 
   constructor() {
-    this.url = 'http://localhost:3000';
+    this.url = 'ws://localhost:3000';
   }
 
   /**
    *
    * @returns {Subject<MessageEvent>}
    */
-  connect(): Subject<MessageEvent> {
+  public connect(): Subject<MessageEvent> {
     this.subject$ = this.create();
-    return this.subject$
+    return this.subject$;
   }
 
   private create(): Subject<MessageEvent> {
