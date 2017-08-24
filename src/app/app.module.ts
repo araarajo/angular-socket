@@ -14,6 +14,7 @@ import { reducers } from './reducers';
 import { MessageSelect } from './selects/message.select';
 import { ChatContentComponent } from './components/chat-content/chat-content.component';
 import { ChatInputComponent } from './components/chat-input/chat-input.component';
+import { LoggerService } from './services/logger.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ChatInputComponent } from './components/chat-input/chat-input.component
     SocketService,
     MessengerService,
     BroadcastEventService,
-    MessageSelect
+    MessageSelect,
+    LoggerService
   ],
   bootstrap: [AppComponent]
 })

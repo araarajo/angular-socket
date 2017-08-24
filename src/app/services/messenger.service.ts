@@ -4,13 +4,15 @@ import { SocketService } from './socket.service';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/observable/of';
 import { BroadcastEventService } from './broadcast-event.service';
+import { LoggerService } from './logger.service';
 
 @Injectable()
 export class MessengerService {
   private subject$: Subject<any>;
 
   constructor(private socketService: SocketService,
-              private broadcastEvent: BroadcastEventService) {
+              private broadcastEvent: BroadcastEventService,
+              private logger: LoggerService) {
   }
 
   public connect() {
@@ -38,7 +40,7 @@ export class MessengerService {
   }
 
   public sendMessage(message: string) {
-    console.log('send', message);
+    this.logger.info('send', message);
     this.subject$.next(message);
   }
 
@@ -50,7 +52,7 @@ export class MessengerService {
   }
 
   private handleResponse(resp: MessageEvent) {
-    console.log('resp', resp);
+    this.logger.info('resp', resp);
     switch ( resp.type ) {
       case 'open':
         this.handleOpenResp();
