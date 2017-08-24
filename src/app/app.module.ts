@@ -9,6 +9,9 @@ import { SocketService } from './services/socket.service';
 import { MessengerService } from './services/messenger.service';
 import { BroadcastEventService } from './services/broadcast-event.service';
 import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './reducers';
+import { MessageSelect } from './selects/message.select';
 
 @NgModule({
   declarations: [
@@ -19,12 +22,14 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     FormsModule,
     HttpModule,
-    CommonModule
+    CommonModule,
+    StoreModule.forRoot(reducers)
   ],
   providers: [
     SocketService,
     MessengerService,
-    BroadcastEventService
+    BroadcastEventService,
+    MessageSelect
   ],
   bootstrap: [AppComponent]
 })
