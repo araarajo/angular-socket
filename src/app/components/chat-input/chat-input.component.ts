@@ -1,9 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-chat-input',
   templateUrl: './chat-input.component.html',
-  styleUrls: ['./chat-input.component.css']
+  styleUrls: ['./chat-input.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChatInputComponent implements OnInit {
   @Output() sendMessage = new EventEmitter();

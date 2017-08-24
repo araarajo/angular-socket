@@ -38,6 +38,7 @@ export class MessengerService {
   }
 
   public sendMessage(message: string) {
+    console.log('send', message);
     this.subject$.next(message);
   }
 

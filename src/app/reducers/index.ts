@@ -1,11 +1,10 @@
 import { ActionReducerMap } from '@ngrx/store';
-// import * as fromMessages from './message.reducer';
-import { messageReducer, MessageState } from './message.reducer';
+import * as fromMessage from './message.reducer';
 
 export interface AppStore {
-  messageReducer: MessageState;
+  messageReducer: fromMessage.State;
 };
 
 export const reducers: ActionReducerMap<AppStore> = {
-  messageReducer
+  messageReducer: fromMessage.reducer
 };
