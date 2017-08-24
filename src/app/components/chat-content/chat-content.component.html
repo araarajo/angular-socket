@@ -1,0 +1,28 @@
+<div class="card-block">
+  <ul class="chat" *ngFor="let item of messageList">
+    <li class="left clearfix" *ngIf="item.sender=='you'">
+              <span class="chat-img pull-left">
+                <img src="http://placehold.it/50/55C1E7/fff&amp;text=U" alt="User Avatar" class="rounded-circle">
+              </span>
+      <div class="chat-body clearfix">
+        <div class="header">
+          <strong class="primary-font">{{item.sender}}</strong>
+          <small class="pull-right text-muted"><span class="fa fa-clock-o"></span>{{item.date}}</small>
+        </div>
+        <p>{{item.content}}</p>
+      </div>
+    </li>
+    <li class="right clearfix" *ngIf="item.sender=='me'">
+              <span class="chat-img pull-right">
+                <img src="http://placehold.it/50/FA6F57/fff&amp;text=ME" alt="User Avatar" class="rounded-circle">
+              </span>
+      <div class="chat-body clearfix">
+        <div class="header">
+          <small class=" text-muted"><span class="fa fa-clock-o"></span>{{item.date}}</small>
+          <strong class="pull-right primary-font">{{item.sender}}</strong>
+        </div>
+        <p>{{item.content}}</p>
+      </div>
+    </li>
+  </ul>
+</div>

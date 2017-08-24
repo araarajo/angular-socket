@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { MessengerService } from '../../services/messenger.service';
 import { BroadcastEventService } from '../../services/broadcast-event.service';
 import { MessageModel } from '../../models/message.model';
@@ -12,11 +12,11 @@ import { Subscription } from 'rxjs/Subscription';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.css']
+  styleUrls: ['./chat.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChatComponent implements OnInit, OnDestroy {
   public messageList$: Observable<MessageModel[]>;
-  public messageList: Array<MessageModel> = [];
   public textMessage: string;
 
   private onMessageEvent: Subscription;
@@ -46,7 +46,6 @@ export class ChatComponent implements OnInit, OnDestroy {
           content: res
         });
         this.store.dispatch(new messageAction.AddMessageAction(message));
-        this.messageList.push(message);
       });
   }
 
@@ -55,7 +54,6 @@ export class ChatComponent implements OnInit, OnDestroy {
       sender: 'me',
       content: inputValue
     });
-    this.messageList.push(new MessageModel(message));
     this.store.dispatch(new messageAction.AddMessageAction(message));
     this.messengerService.sendMessage(inputValue);
     this.textMessage = '';

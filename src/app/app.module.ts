@@ -12,11 +12,13 @@ import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './reducers';
 import { MessageSelect } from './selects/message.select';
+import { ChatContentComponent } from './components/chat-content/chat-content.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChatComponent
+    ChatComponent,
+    ChatContentComponent
   ],
   imports: [
     BrowserModule,
