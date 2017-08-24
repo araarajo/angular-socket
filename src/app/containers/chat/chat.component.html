@@ -6,14 +6,7 @@
           <span class="fa fa-comment"></span> Chat
         </div>
         <app-chat-content [messageList]="messageList$ | async"></app-chat-content>
-        <div class="card-footer">
-          <div class="input-group">
-            <input type="text" #inputMessage [(ngModel)]="textMessage" class="form-control form-control-sm" placeholder="Type your message here...">
-            <span class="input-group-btn">
-              <button class="btn btn-warning btn-sm" (click)="sendMessage(inputMessage.value)">Send</button>
-            </span>
-          </div>
-        </div>
+        <app-chat-input (sendMessage)="sendMessage($event)"></app-chat-input>
       </div>
     </div>
   </div>

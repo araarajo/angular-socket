@@ -13,12 +13,14 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './reducers';
 import { MessageSelect } from './selects/message.select';
 import { ChatContentComponent } from './components/chat-content/chat-content.component';
+import { ChatInputComponent } from './components/chat-input/chat-input.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChatComponent,
-    ChatContentComponent
+    ChatContentComponent,
+    ChatInputComponent
   ],
   imports: [
     BrowserModule,

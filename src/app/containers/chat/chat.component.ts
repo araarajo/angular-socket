@@ -17,8 +17,6 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class ChatComponent implements OnInit, OnDestroy {
   public messageList$: Observable<MessageModel[]>;
-  public textMessage: string;
-
   private onMessageEvent: Subscription;
 
   constructor(private messengerService: MessengerService,
@@ -40,7 +38,6 @@ export class ChatComponent implements OnInit, OnDestroy {
   private onMessage() {
     this.onMessageEvent = this.broadcaseEvent.on('message')
       .subscribe(res => {
-        console.log(res);
         const message = new MessageModel({
           sender: 'you',
           content: res
@@ -56,7 +53,6 @@ export class ChatComponent implements OnInit, OnDestroy {
     });
     this.store.dispatch(new messageAction.AddMessageAction(message));
     this.messengerService.sendMessage(inputValue);
-    this.textMessage = '';
   }
 
 }
